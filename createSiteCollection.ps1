@@ -18,6 +18,7 @@ try {
     Get-PnPTimeZoneId | Out-Host
     $TZone = Read-Host -Prompt 'Choose timezone id based on values above'
 
+    Connect-pnpOnline -url $SharePointUrl
     #Create site collection based on team site template
     New-PnPTenantSite -Owner $SiteOwner -Title 'Brand new site collection' -Url $SharePointUrl -Template 'STS#0' -TimeZone $TZone  
     
