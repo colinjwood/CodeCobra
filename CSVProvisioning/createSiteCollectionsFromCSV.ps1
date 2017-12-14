@@ -1,5 +1,8 @@
  <#
-        This script prompt loops through an imported csv file and creates a site collection for every entry 
+        This script prompt creates a new site collection in your Office 365 tenant
+        The user is prompted for the SharePoint Site Collection url, Site Owner and TimeZone of the newly created
+        Site Collection and the site template used is the team site.
+        These values could be hardcoded as well without prompting. 
 #>
 
 try {    
@@ -22,7 +25,8 @@ try {
 
         #Create site collection based on values above        
         New-PnPTenantSite -Owner $SiteOwner -Title $Title -Url $SharePointUrl -Template $Template -TimeZone $TimeZone  
-    }    
+    }
+    
 }
 catch {
     Write-Host $error[0].Message
