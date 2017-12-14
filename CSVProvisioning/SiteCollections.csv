@@ -1,4 +1,3 @@
-Url	Owner	Title	SiteTemplate	TimeZone
-https://opsdevtest.sharepoint.com/sites/teamsite1	cwood@oneplace365.com	TeamSite1	STS#0	76
-https://opsdevtest.sharepoint.com/sites/teamsite2	cwood@oneplace365.com	TeamSite2	STS#0	76
-https://opsdevtest.sharepoint.com/sites/blogsite1	cwood@oneplace365.com	BlogSite1	BLOG#0	76
+Url,Owner,Title,SiteTemplate,TimeZone
+https://<tenanturl>/sites/teamsite1csv,user@office365.com,Team Site 1,STS#0,76
+https://<tenanturl>/sites/blogsite1csv,user@office365.com,Blog Site 1,BLOG#0,76
