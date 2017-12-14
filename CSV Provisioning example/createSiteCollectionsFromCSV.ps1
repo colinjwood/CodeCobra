@@ -8,6 +8,10 @@
 try {    
     Set-ExecutionPolicy Bypass -Scope Process
 
+     #Prompt for Tenant url
+    $TenantUrl = Read-Host -Prompt 'Enter your SharePoint online tenant url'
+    Connect-pnpOnline -url $TenantUrl
+
     $siteCollectionList = Import-Csv -Path "C:\temp\SiteCollections.csv"
 
     #Loop through csv and provision site collection from each csv entry
@@ -17,14 +21,10 @@ try {
         $SiteOwner = $siteCollection.Owner
         $Title = $siteCollection.Title
         $Template = $siteCollection.SiteTemplate
-        $TimeZone = $siteCollection.TimeZone
-        $TenantUrl = $siteCollection.TenantUrl
+        $TimeZone = $siteCollection.TimeZone       
 
-        #Create site collection based on values above
-        Connect-pnpOnline -url $TenantUrl
-        New-PnPTenantSite -Owner $SiteOwner -Title $Title -Url $SharePointUrl -Template 'STS#0' -TimeZone $TimeZone  
-        
-
+        #Create site collection based on values above        
+        New-PnPTenantSite -Owner $SiteOwner -Title $Title -Url $SharePointUrl -Template $Template -TimeZone $TimeZone  
     }
     
 }
