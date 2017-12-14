@@ -8,6 +8,10 @@
 try {    
     Set-ExecutionPolicy Bypass -Scope Process
 
+    #Prompt for Tenant url
+    $TenantUrl = Read-Host -Prompt 'Enter your SharePoint online tenant url'
+    Connect-pnpOnline -url $TenantUrl
+    
     #Prompt for SharePoint Url     
     $SharePointUrl = Read-Host -Prompt 'Enter the url of your brand new site collection'
 
@@ -16,11 +20,10 @@ try {
 
     #Prompt for timezone of newly created site collection (enter id number)
     Get-PnPTimeZoneId | Out-Host
-    $TZone = Read-Host -Prompt 'Choose timezone id based on values above'
-
+    $TZone = Read-Host -Prompt 'Choose timezone id based on values above'    
+   
     #Create site collection based on team site template
-    New-PnPTenantSite -Owner $SiteOwner -Title 'Brand new site collection' -Url $SharePointUrl -Template 'STS#0' -TimeZone $TZone  
-    
+    New-PnPTenantSite -Owner $SiteOwner -Title 'Brand new site collection' -Url $SharePointUrl -Template 'STS#0' -TimeZone $TZone     
 }
 catch {
     Write-Host $error[0].Message
